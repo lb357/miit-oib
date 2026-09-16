@@ -2,7 +2,7 @@ from cli import *
 from alphabet import Alphabet
 
 
-def encode():
+def encrypt():
     alphabet : Alphabet = get_alphabet()
     key : int = get_int_key()
     data : str = input_data()
@@ -17,7 +17,7 @@ def encode():
     output_result(encoded)
 
 
-def decode():
+def decrypt():
     alphabet : Alphabet = get_alphabet()
     key : int = get_int_key()
     encoded : str = input_encoded()
@@ -32,5 +32,5 @@ def decode():
     
 
 if __name__ == "__main__":
-    menu(1, "Одноалфавитная подстановка", encode, decode)
+    menu(1, "Одноалфавитная подстановка", encrypt, decrypt)
 
