@@ -49,7 +49,7 @@ def get_alphabet() -> Alphabet:
         try:
             print("Выберите алфавит из списка:\n1. Обобщенный\n"
                   "2. Русский\n3. Русский (реверс.)\n4. Английский\n"
-                  "5. Юникод\n6. ASCII\n7. Ввести \n8. Загрузить из файла")
+                  "5. Юникод\n6. ASCII\n7. Символы ФИО\n8. Ввести \n9. Загрузить из файла")
             match get_int():
                 case 1:
                     return StringAlphabet("абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
@@ -72,8 +72,10 @@ def get_alphabet() -> Alphabet:
                 case 6:
                     return AsciiAlphabet()
                 case 7:
-                    return StringAlphabet(input("Алфавит: "))
+                    return StringAlphabet("кдряБи ОнсвЛгчоела")
                 case 8:
+                    return StringAlphabet(input("Алфавит: "))
+                case 9:
                     with open(input("Путь к файлу: "), "r", encoding='utf-8') as file:
                         return StringAlphabet(file.read())
                 case _:
