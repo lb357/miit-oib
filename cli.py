@@ -39,6 +39,18 @@ def get_int_key() -> int:
     print("Введите ключ (число):")
     return get_int()
 
+def get_int_array_key(unique: bool = True) -> list[int]:
+    print("Введите ключ (набор чисел через пробел):")
+    while True:
+        try:
+            data: list[int] = list(map(int, input("> ").split(" ")))
+            if unique:
+                assert len(set(data)) == len(data)
+            return data
+        except (ValueError, AssertionError):
+            print(f"Введен не набор уникальных чисел через пробел, повторите попытку")
+
+
 def get_str_key() -> str:
     print("Введите ключ (строку):")
     return input()
