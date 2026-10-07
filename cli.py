@@ -40,7 +40,11 @@ def get_int_key() -> int:
     return get_int()
 
 def get_int_array_key(unique: bool = True) -> list[int]:
-    print("Введите ключ (набор чисел через пробел):")
+    return get_int_array("Введите ключ (набор чисел через пробел):")
+
+
+def get_int_array(label: str = "Введите набор чисел через пробел", unique: bool = True) -> list[int]:
+    print(label)
     while True:
         try:
             data: list[int] = list(map(int, input("> ").split(" ")))
@@ -98,11 +102,13 @@ def get_alphabet() -> Alphabet:
             print("Файл не найден, повторите попытку")
 
 
-def input_data() -> str:
+def input_data(can_by_binary: bool = False) -> str | bytes:
     while True:
         try:
-            print("Входные данные:\n1. ФИО\n2. Ввести\n"
-                  "3. Загрузить из файла")
+            menu_text = "Входные данные:\n1. ФИО\n2. Ввести\n3. Загрузить из файла"
+            if can_by_binary:
+                menu_text+="\n4. Загрузка из бинарного файла"
+            print(menu_text)
             match get_int():
                 case 1:
                     return author
@@ -115,31 +121,52 @@ def input_data() -> str:
                             encoding='utf-8'
                     ) as file:
                         return file.read()
+                case 4:
+                    assert can_by_binary
+                    with open(
+                            input("Путь к бинарному файлу: "),
+                            "rb",
+                    ) as file:
+                        return file.read()
                 case _:
                     print("Неизвестное действие, повторите попытку")
         except FileNotFoundError:
             print("Файл не найден, повторите попытку")
+        except AssertionError:
+            print("Неизвестное действие, повторите попытку")
 
 
-def input_encoded() -> str:
+def input_encoded(can_by_binary: bool = False) -> str | bytes:
     while True:
         try:
-            print("Входные данные:\n1. Ввести\n2. Загрузить из файла")
+            menu_text = "Входные данные:\n1. Ввести\n2. Загрузить из файла"
+            if can_by_binary:
+                menu_text += "\n3. Загрузить из бинарного файла"
+            print(menu_text)
             match get_int():
                 case 1:
                     return input("Ввод зашифрованных данных: ")
                 case 2:
                     with open(input("Путь к файлу: "), "r", encoding='utf-8') as file:
                         return file.read()
+                case 3:
+                    assert can_by_binary
+                    with open(
+                            input("Путь к бинарному файлу: "),
+                            "rb",
+                    ) as file:
+                        return file.read()
                 case _:
                     print("Неизвестное действие, повторите попытку")
         except FileNotFoundError:
-            print("Файл не найден, повторите попытку")        
+            print("Файл не найден, повторите попытку")
+        except AssertionError:
+            print("Неизвестное действие, повторите попытку")
 
 
 def output_result(result: str):
     while True:
-        print("Выходные данные:\n1. Вывести\n2. Сохранить в файл")
+        print("Выходные данные:\n1. Вывести\n2. Сохранить в файл\n3. Сохранить в бинарный файл")
         match get_int():
             case 1:
                 print(f"Вывод: {result}")
@@ -150,3 +177,8 @@ def output_result(result: str):
                 return
             case _:
                 print("Неизвестное действие, повторите попытку")
+
+
+def output_binary_result(result: bytes):
+    with open(input("Путь к бинарному файлу вывода: "), "wb") as file:
+        file.write(result)
