@@ -1,0 +1,48 @@
+# depslib dependency file v1.0
+1793177817 source:c:\users\admin\desktop\miit-oib\des-ofb\main.c
+	<stdio.h>
+	<stdint.h>
+	<inttypes.h>
+	"ofb.h"
+
+1793170892 source:c:\users\admin\desktop\miit-oib\des-ofb\des.c
+	"des.h"
+
+1793152148 c:\users\admin\desktop\miit-oib\des-ofb\des.c
+	<stdio.h>
+	<stdlib.h>
+
+1793172959 c:\users\admin\desktop\miit-oib\des-ofb\des.h
+	"datablock.h"
+
+1793160510 source:c:\users\admin\desktop\miit-oib\des-ofb\block.c
+	<stdbool.h>
+	<stdint.h>
+
+1793174832 source:c:\users\admin\desktop\miit-oib\des-ofb\datablock.c
+	"datablock.h"
+
+1793168865 c:\users\admin\desktop\miit-oib\des-ofb\datablock.h
+	<stdbool.h>
+	<stdint.h>
+
+1793175517 source:c:\users\admin\desktop\miit-oib\des-ofb\file.c
+	"datablock.h"
+	<stddef.h>
+	<stdio.h>
+	<stdint.h>
+	<stdbool.h>
+
+1793178679 source:c:\users\admin\desktop\miit-oib\des-ofb\ofb.c
+	"ofb.h"
+	<errno.h>
+
+1793176294 c:\users\admin\desktop\miit-oib\des-ofb\ofb.h
+	"file.h"
+
+1793172266 c:\users\admin\desktop\miit-oib\des-ofb\file.h
+	<stdint.h>
+	<stdbool.h>
+	<stdio.h>
+	"des.h"
+
